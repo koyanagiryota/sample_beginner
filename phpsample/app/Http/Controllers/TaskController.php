@@ -11,9 +11,7 @@ class TaskController extends Controller
     {
         $folders = Folder::all();
 
-        return view('tasks/index',[
-            'folders' =>＄folders,
-        ]);
+        return view('tasks/index',[ 'folders' => ＄folders ]);
     }
     //
 }
