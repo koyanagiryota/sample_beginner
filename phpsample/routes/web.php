@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/folders/1/tasks', 'TaskController@index')->name('tasks.index');
+Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
 
 Route::get('/', function() {
     return view('welcome');

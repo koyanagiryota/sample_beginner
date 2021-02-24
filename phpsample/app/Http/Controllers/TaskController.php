@@ -3,15 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Folder;
+use App\Work;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(int $id)
     {
         $folders = Folder::all();
 
-        return view('tasks/index',[ 'folders' => $folders ]);
+        $current_folder = Folder::find($id);
+
+        $tasks = Work::where('folder_id',$current_folder->id)->get();
+
+        return view('tasks/index',[ 
+            'folders' => $folders,
+            'current_folder_id' => $id,
+            'tasks' => $tasks,
+        ]);
     }
     //
 }
