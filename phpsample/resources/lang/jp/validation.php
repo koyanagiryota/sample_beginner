@@ -118,6 +118,9 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    //dateのルールの追加
+    'date' => ':attribute には日付を入力してください。',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
