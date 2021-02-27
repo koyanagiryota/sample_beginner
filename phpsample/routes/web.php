@@ -11,6 +11,9 @@
 |
 */
 //ホーム画面
+Route::get('/','HomeController@index')->name('home');
+
+//選択画面
 Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
 
 //フォルダ作成画面
