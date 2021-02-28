@@ -10,27 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//ホーム画面
-Route::get('/','HomeController@index')->name('home');
 
-//選択画面
-Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
+Route::group([ 'middleware' => 'auth' ], function(){
 
-//フォルダ作成画面
-Route::get('/folders/create','FolderController@showCreateForm')->name('folders.create');
-Route::post('/folders/create','FolderController@create');
+  //ホーム
+  Route::get('/','HomeController@index')->name('home');
 
-//タスク作成画面
-Route::get('/folders/{id}/tasks/create','TaskController@showCreateForm')->name('tasks.create');
-Route::post('/folders/{id}/tasks/create','TaskController@create');
+  //選択画面
+  Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
 
-//タスク編集画面
-Route::get('/folders/{id}/tasks/{task_id}/edit','TaskController@showEditForm')->name('tasks.edit');
-Route::post('/folders/{id}/tasks/{task_id}/edit','TaskController@edit');
+  //フォルダ作成画面
+  Route::get('/folders/create','FolderController@showCreateForm')->name('folders.create');
+  Route::post('/folders/create','FolderController@create');
+
+  //タスク作成画面
+  Route::get('/folders/{id}/tasks/create','TaskController@showCreateForm')->name('tasks.create');
+  Route::post('/folders/{id}/tasks/create','TaskController@create');
+
+  //タスク編集画面
+  Route::get('/folders/{id}/tasks/{task_id}/edit','TaskController@showEditForm')->name('tasks.edit');
+  Route::post('/folders/{id}/tasks/{task_id}/edit','TaskController@edit');
+
+});
 
 //
 Auth::routes();
 
-Route::get('/', function() {
-    return view('welcome');
-  });
+//Route::get('/', function() {
+  //  return view('welcome');
+ // });
